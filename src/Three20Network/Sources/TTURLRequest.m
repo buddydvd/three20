@@ -251,6 +251,13 @@ static NSString* kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
   return _parameters;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSMutableDictionary*)headers {
+  if (!_headers) {
+    _headers = [[NSMutableDictionary alloc] init];
+  }
+  return _headers;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSData*)httpBody {
