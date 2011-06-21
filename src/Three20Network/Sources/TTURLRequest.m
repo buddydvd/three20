@@ -279,8 +279,8 @@ static NSString* kStringBoundary = @"3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f";
   if (_contentType) {
     return _contentType;
 
-  } else if ([_httpMethod isEqualToString:@"POST"]
-             || [_httpMethod isEqualToString:@"PUT"]) {
+  } else if ([[_httpMethod uppercaseString] isEqualToString:@"POST"]
+             || [[_httpMethod uppercaseString] isEqualToString:@"PUT"]) {
     return [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kStringBoundary];
 
   } else {
