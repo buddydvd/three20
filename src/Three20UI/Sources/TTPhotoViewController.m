@@ -848,6 +848,15 @@ static const NSInteger kActivityLabelTag          = 96;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)scrollView:(TTScrollView*)scrollView tappedAtPoint:(CGPoint)point {
+  if ([self isShowingChrome]) {
+    [self showBars:NO animated:YES];
+  } else {
+    [self showBars:YES animated:NO];
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)scrollView:(TTScrollView*)scrollView tapped:(UITouch*)touch {
   if ([self isShowingChrome]) {
     [self showBars:NO animated:YES];

@@ -50,6 +50,8 @@
 
 - (void)scrollView:(TTScrollView*)scrollView touchedUpInside:(UITouch*)touch;
 
+- (void)scrollView:(TTScrollView*)scrollView tappedAtPoint:(CGPoint)point;
+
 - (void)scrollView:(TTScrollView*)scrollView tapped:(UITouch*)touch;
 
 - (void)scrollViewDidBeginHolding:(TTScrollView*)scrollView;

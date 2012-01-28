@@ -1034,7 +1034,10 @@ static const CGFloat kFrameDuration = 1.0/40.0f;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)startTapTimer:(UITouch*)touch {
   _tapTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(tapTimer:)
-    userInfo:touch repeats:NO];
+    userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+              touch, @"touch",
+              [NSValue valueWithCGPoint:[touch locationInView:self]], @"point",
+              nil] repeats:NO];
 }
 
 
@@ -1042,8 +1045,12 @@ static const CGFloat kFrameDuration = 1.0/40.0f;
 - (void)tapTimer:(NSTimer*)timer {
   _tapTimer = nil;
 
-  if ([_delegate respondsToSelector:@selector(scrollView:tapped:)]) {
-    UITouch* touch = timer.userInfo;
+  NSDictionary *userInfoDictionary = (NSDictionary *)timer.userInfo;
+  UITouch *touch = [userInfoDictionary objectForKey:@"touch"];
+  CGPoint point = [[userInfoDictionary objectForKey:@"point"] CGPointValue];
+  if ([_delegate respondsToSelector:@selector(scrollView:tappedAtPoint:)]) {
+    [_delegate scrollView:self tappedAtPoint:point];
+  } else if ([_delegate respondsToSelector:@selector(scrollView:tapped:)]) {
     [_delegate scrollView:self tapped:touch];
   }
 }
