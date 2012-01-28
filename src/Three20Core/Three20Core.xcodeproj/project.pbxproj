@@ -170,8 +170,10 @@
 				6ED118E41183C38A0096AEBF /* Configurations */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
+			indentWidth = 2;
 			name = CustomTemplate;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6664448A129386CB0045A174 /* Private */ = {
 			isa = PBXGroup;

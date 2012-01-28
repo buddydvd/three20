@@ -137,8 +137,10 @@
 				6E08B274118282F700DA1579 /* Tests */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
+			indentWidth = 2;
 			name = CustomTemplate;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		6E08B274118282F700DA1579 /* Tests */ = {
 			isa = PBXGroup;
