@@ -305,7 +305,7 @@
     NSString* text = [context.delegate textForLayerWithStyle:self];
     UIFont* font = _font ? _font : context.font;
 
-    CGFloat maxWidth = context.contentFrame.size.width;
+    CGFloat maxWidth = context.contentFrame.size.width - size.width;
     if (!maxWidth) {
       maxWidth = CGFLOAT_MAX;
     }
