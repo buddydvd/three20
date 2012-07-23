@@ -89,10 +89,20 @@ TT_FIX_CATEGORY_BUG(UIImageAdditions)
   }
 
   CGImageRef imageRef = self.CGImage;
-  int bytesPerRow = destW * (CGImageGetBitsPerPixel(imageRef) >> 3);
+  CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+  CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+
+  // CGBitmapContextCreate doesn't support kCGImageAlphaNone with RGB.
+  // https://developer.apple.com/library/mac/#qa/qa1037/_index.html
+  if ((bitmapInfo & kCGBitmapAlphaInfoMask) == kCGImageAlphaNone && CGColorSpaceGetNumberOfComponents(colorSpace) > 1) {
+    // Unset the old alpha info.
+    bitmapInfo &= ~kCGBitmapAlphaInfoMask;
+    // Set noneSkipFirst.
+    bitmapInfo |= kCGImageAlphaNoneSkipFirst;
+  }
+
   CGContextRef bitmap = CGBitmapContextCreate(NULL, destW, destH,
-    CGImageGetBitsPerComponent(imageRef), bytesPerRow, CGImageGetColorSpace(imageRef),
-    CGImageGetBitmapInfo(imageRef));
+    CGImageGetBitsPerComponent(imageRef), 0, colorSpace, bitmapInfo);
 
   if (rotate) {
     if (self.imageOrientation == UIImageOrientationDown) {
