@@ -157,8 +157,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)updateToolbarWithOrientation:(UIInterfaceOrientation)interfaceOrientation {
   _toolbar.height = TTToolbarHeight();
-  _webView.height = self.view.height - _toolbar.height;
-  _toolbar.top = self.view.height - _toolbar.height;
+  _webView.height = self.view.bounds.size.height - _toolbar.height;
+  _toolbar.top = self.view.bounds.size.height - _toolbar.height;
 }
 
 
