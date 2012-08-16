@@ -560,6 +560,8 @@ static const CGFloat kFrameDuration = 1.0/40.0f;
       }
       page.frame = CGRectMake(offset.x + frame.origin.x*zoom, offset.y + frame.origin.y*zoom,
         frame.size.width*zoom, frame.size.height*zoom);
+      [page setNeedsLayout];
+      [page layoutIfNeeded];
 
       // Should animate the relayout?
       if ( _nextLayoutAnimated ) {
@@ -578,6 +580,8 @@ static const CGFloat kFrameDuration = 1.0/40.0f;
 
       page.frame = CGRectMake(offset.x + frame.origin.x, offset.y + frame.origin.y,
         frame.size.width, frame.size.height);
+      [page setNeedsLayout];
+      [page layoutIfNeeded];
 
       // Should animate the relayout?
       if ( _nextLayoutAnimated ) {
