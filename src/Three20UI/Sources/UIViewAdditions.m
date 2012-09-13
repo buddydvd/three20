@@ -423,7 +423,7 @@ TT_FIX_CATEGORY_BUG(UIViewAdditions)
 }
 
 
-#ifdef DEBUG
+#ifdef DEBUG_Removed
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)simulateTapAtPoint:(CGPoint)location {
