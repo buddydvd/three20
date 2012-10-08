@@ -276,7 +276,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)setUrlPath:(NSString*)urlPath {
   // Check for no changes.
-  if (nil != _image && nil != _urlPath && [urlPath isEqualToString:_urlPath]) {
+  if (nil != _image && (self.defaultImage != _image || self.isLoading) && nil != _urlPath && [urlPath isEqualToString:_urlPath]) {
     return;
   }
 
